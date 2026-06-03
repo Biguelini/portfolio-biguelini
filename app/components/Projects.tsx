@@ -4,8 +4,6 @@ import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 
-const projects: { title: string; description: string; technologies: string[] }[] = []
-
 export function Projects() {
   const containerVariants = {
     hidden: { opacity: 0 },
