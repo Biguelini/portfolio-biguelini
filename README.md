@@ -129,5 +129,5 @@ Efeitos de brilho para destaque
 
 ---
 
-Desenvolvido com ❤️ usando Next.js, TypeScript e Tailwind CSS
+Desenvolvido com ❤️ por Biguelini
 
