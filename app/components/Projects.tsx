@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function Projects() {
   const containerVariants = {
@@ -49,11 +50,42 @@ export function Projects() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <motion.div
+              variants={itemVariants}
+              className="glass-effect border border-purple-primary/20 rounded-xl overflow-hidden hover:border-purple-primary/50 transition-all hover:-translate-y-1"
+            >
+              <div className="relative h-48 w-full border-b border-purple-primary/20">
+                <Image
+                  src="/images/solaris.png"
+                  alt="Solaris"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-2">Solaris</h3>
+                <p className="text-gray-400 mb-4 line-clamp-3">
+                  Infraestrutura energética de precisão. Projetos solares dimensionados matematicamente para reduzir a fatura de energia a quase zero.
+                </p>
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="https://solaris-three.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-purple-secondary hover:text-purple-tertiary transition-colors font-semibold"
+                  >
+                    Visitar site
+                    <ExternalLink size={16} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
                 variants={itemVariants}
-                className="col-span-full text-center py-16 glass-effect rounded-xl text-gray-300 border-purple-primary/20 border"
+                className="md:col-span-1 lg:col-span-2 flex flex-col items-center justify-center text-center py-16 glass-effect rounded-xl text-gray-300 border-purple-primary/20 border"
               >
                 <h3 className="text-2xl font-bold mb-4">Em breve</h3>
-                <p className="text-lg text-gray-400">Projetos serão publicados aqui assim que estiverem prontos.</p>
+                <p className="text-lg text-gray-400">Mais projetos serão publicados aqui assim que estiverem prontos.</p>
               </motion.div>
               
           </motion.div>
