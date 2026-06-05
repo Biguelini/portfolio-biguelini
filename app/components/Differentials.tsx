@@ -1,62 +1,44 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Sparkles, Zap, Maximize, CheckCircle, MessageSquare } from 'lucide-react'
+
+const items = [
+  { text: 'Código limpo', icon: Sparkles, className: 'col-span-1 md:col-span-2 md:row-span-1' },
+  { text: 'Performance', icon: Zap, className: 'col-span-1 md:col-span-1 md:row-span-2' },
+  { text: 'Escalabilidade', icon: Maximize, className: 'col-span-1 md:col-span-1 md:row-span-2' },
+  { text: 'Boas práticas', icon: CheckCircle, className: 'col-span-1 md:col-span-1 md:row-span-1' },
+  { text: 'Comunicação clara', icon: MessageSquare, className: 'col-span-1 md:col-span-2 md:row-span-1' },
+]
 
 export function Differentials() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8 },
-    },
-  }
-
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-purple-dark">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 auto-rows-[160px] gap-4"
         >
-          
-          <motion.div variants={itemVariants} className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">Como gosto de trabalhar</span>
-            </h2>
-          </motion.div>
-
-          
-          <motion.div
-            variants={itemVariants}
-            className="max-w-3xl mx-auto"
-          >
-            <motion.p
-              variants={itemVariants}
-              className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6 text-center"
-            >
-              Acredito que software deve ser <span className="text-purple-secondary font-semibold">simples de entender</span>, <span className="text-purple-secondary font-semibold">fácil de manter</span> e <span className="text-purple-secondary font-semibold">preparado para evoluir</span>.
-            </motion.p>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-lg md:text-xl text-gray-300 leading-relaxed text-center"
-            >
-              Busco desenvolver soluções priorizando <span className="text-purple-secondary font-semibold">clareza</span>, <span className="text-purple-secondary font-semibold">qualidade de código</span> e <span className="text-purple-secondary font-semibold">experiência do usuário</span>.
-            </motion.p>
-          </motion.div>
+          {items.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 0.98 }}
+                className={`group glass-panel rounded-3xl p-8 flex flex-col justify-end relative overflow-hidden ${item.className}`}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#A855F7] opacity-0 group-hover:opacity-10 blur-[50px] transition-opacity duration-500 rounded-full" />
+                <div className="absolute top-6 left-6 text-[#8B5CF6]/50 group-hover:text-[#8B5CF6] transition-colors duration-300">
+                  <Icon size={32} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight z-10">
+                  {item.text}
+                </h3>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>

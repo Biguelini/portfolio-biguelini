@@ -3,63 +3,53 @@
 import { motion } from 'framer-motion'
 
 export function About() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
+  const textVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
+    visible: { opacity: 1, y: 0 }
   }
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-4xl mx-auto">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ staggerChildren: 0.2 }}
+          className="glass-panel p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden"
         >
+          {/* Subtle glow inside the card */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#8B5CF6] opacity-10 blur-[80px] rounded-full pointer-events-none" />
           
-          <motion.div variants={itemVariants} className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Sobre <span className="gradient-text">João Pedro Biguelini</span>
-            </h2>
-            <div className="h-1 w-20 bg-gradient-purple rounded" />
-          </motion.div>
-
+          <motion.h2 
+            variants={textVariants}
+            transition={{ duration: 0.8 }}
+            className="text-3xl md:text-5xl font-bold mb-8 tracking-tight text-white"
+          >
+            Sobre mim
+          </motion.h2>
           
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-300 leading-relaxed mb-6"
-          >
-            Sou desenvolvedor de software com experiência na construção de aplicações web, APIs e sistemas voltados para resolver problemas reais.
-          </motion.p>
+          <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed font-light">
+            <motion.p variants={textVariants} transition={{ duration: 0.8 }}>
+              Olá! Sou <strong className="text-white font-medium">João Pedro Biguelini</strong>, Desenvolvedor Full Stack apaixonado por tecnologia desde os 13 anos, quando escrevi minhas primeiras linhas de código. Desde então, transformei a programação em uma carreira construída através de estudos, projetos práticos e experiência profissional.
+            </motion.p>
+            
+            <motion.p variants={textVariants} transition={{ duration: 0.8 }}>
+              Minha trajetória começou com a formação técnica em Informática durante o ensino médio e continua atualmente na graduação em <strong className="text-white font-medium">Análise e Desenvolvimento de Sistemas pela UTFPR</strong>. Além disso, atuo como Técnico na Sanepar, onde desenvolvo minha capacidade de resolver problemas, trabalhar em equipe e lidar com desafios em ambientes de alta responsabilidade.
+            </motion.p>
+            
+            <motion.p variants={textVariants} transition={{ duration: 0.8 }}>
+              Tenho experiência no desenvolvimento de aplicações web, mobile e APIs, atuando em todas as etapas do processo, desde a modelagem de banco de dados até a implementação de interfaces modernas e escaláveis. Trabalho principalmente com <strong className="text-[#A855F7] font-medium">React, Next.js, Node.js e Laravel</strong>, além de desenvolver aplicações mobile utilizando <strong className="text-[#A855F7] font-medium">Flutter e React Native</strong>.
+            </motion.p>
+            
+            <motion.p variants={textVariants} transition={{ duration: 0.8 }}>
+              Ao longo da minha jornada, adquiri experiência com tecnologias como TypeScript, JavaScript, PHP, Spring Boot, Python, MySQL, PostgreSQL, MongoDB e Firebase. Também possuo conhecimentos em Docker, Linux, Git, AWS e boas práticas de arquitetura e desenvolvimento, incluindo Clean Code, componentização, integração de APIs e versionamento de código.
+            </motion.p>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-300 leading-relaxed mb-6"
-          >
-            Tenho interesse especial por <span className="text-purple-secondary font-semibold">arquitetura de software</span>, <span className="text-purple-secondary font-semibold">boas práticas de desenvolvimento</span> e <span className="text-purple-secondary font-semibold">tecnologias modernas</span> para web.
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-300 leading-relaxed mb-6"
-          >
-            Atualmente trabalho com <span className="text-purple-secondary font-semibold">PHP</span>, <span className="text-purple-secondary font-semibold">Laravel</span>, <span className="text-purple-secondary font-semibold">React</span>, <span className="text-purple-secondary font-semibold">TypeScript</span> e bancos de dados relacionais.
-          </motion.p>
+            <motion.p variants={textVariants} transition={{ duration: 0.8 }}>
+              Acredito que a tecnologia é uma ferramenta para <strong className="text-white font-medium">transformar ideias em soluções reais</strong>. Por isso, busco constantemente evoluir minhas habilidades, aprender novas tecnologias e desenvolver projetos que unam performance, experiência do usuário e qualidade de código.
+            </motion.p>
+          </div>
         </motion.div>
       </div>
     </section>

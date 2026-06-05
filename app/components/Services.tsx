@@ -1,97 +1,68 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Zap, Database, Layout } from 'lucide-react'
+import { Code2, MonitorPlay, Building2, Network } from 'lucide-react'
 
-const expertise = [
+const services = [
   {
-    icon: Code,
-    title: 'Desenvolvimento Backend',
-    description: 'Construção de APIs, regras de negócio e integrações.',
+    title: 'Desenvolvimento Web',
+    description: 'Criação de sistemas e aplicações personalizadas.',
+    icon: Code2
   },
   {
-    icon: Layout,
-    title: 'Frontend Moderno',
-    description: 'Interfaces responsivas utilizando React e TypeScript.',
+    title: 'Landing Pages',
+    description: 'Páginas otimizadas para conversão.',
+    icon: MonitorPlay
   },
   {
-    icon: Zap,
-    title: 'Arquitetura de Software',
-    description: 'Estruturação de aplicações escaláveis e de fácil manutenção.',
+    title: 'Sites Institucionais',
+    description: 'Presença profissional para empresas.',
+    icon: Building2
   },
   {
-    icon: Database,
-    title: 'Banco de Dados',
-    description: 'Modelagem, consultas e otimização de performance.',
-  },
+    title: 'APIs e Integrações',
+    description: 'Integrações entre plataformas e serviços.',
+    icon: Network
+  }
 ]
 
 export function Services() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  }
-
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          
-          <motion.div variants={itemVariants} className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">Áreas de atuação</span>
-            </h2>
-          </motion.div>
-
-          
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
-            {expertise.map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="group glass-effect p-8 rounded-xl hover:border-purple-secondary/50 transition-all duration-300 hover-glow"
-                >
-                  <div className="mb-4 inline-flex p-3 rounded-lg bg-gradient-purple/10 group-hover:bg-gradient-purple/20 transition-colors">
-                    <Icon size={32} className="text-purple-secondary" />
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="group glass-panel p-8 md:p-10 rounded-3xl relative overflow-hidden transition-colors hover:bg-white/[0.05]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/0 via-transparent to-[#7C3AED]/0 group-hover:from-[#7C3AED]/10 transition-all duration-500" />
+                
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div>
+                    <div className="w-14 h-14 rounded-2xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center mb-6 text-[#A855F7]">
+                      <Icon size={28} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+                      {service.title}
+                    </h3>
                   </div>
-
-                  <h3 className="text-xl font-bold mb-3 text-white">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-400 leading-relaxed">
-                    {item.description}
+                  <p className="text-muted-foreground text-lg leading-relaxed font-light">
+                    {service.description}
                   </p>
-
-                  <div className="mt-6 h-1 w-12 bg-gradient-purple rounded opacity-0 group-hover:opacity-100 transition-opacity" />
-                </motion.div>
-              )
-            })}
-          </motion.div>
+                </div>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>
