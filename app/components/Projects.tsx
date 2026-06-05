@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Clock } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 
 export function Projects() {
@@ -21,8 +21,7 @@ export function Projects() {
             <p className="text-muted-foreground">O que tenho construído recentemente.</p>
           </div>
         </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Solaris Project Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -46,7 +45,7 @@ export function Projects() {
                   alt="Solaris Energia Solar"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F23] via-transparent to-transparent opacity-80" />
               </div>
@@ -102,7 +101,7 @@ export function Projects() {
                   alt="Prime Sofás"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F23] via-transparent to-transparent opacity-80" />
               </div>
@@ -129,6 +128,62 @@ export function Projects() {
                 
                 <a href="https://prime-sofas.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white/70 text-sm font-medium hover:text-white transition-colors w-max group/link">
                   Acessar loja
+                  <ArrowUpRight size={16} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* MOVVA Project Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="group glass-panel rounded-3xl overflow-hidden flex flex-col hover:border-white/[0.15] transition-colors h-full w-full"
+          >
+            {/* Fake Mac OS Browser/App Window */}
+            <div className="h-64 lg:h-80 bg-[#0F0F23] relative border-b border-white/[0.05] flex flex-col overflow-hidden">
+              <div className="bg-white/[0.02] border-b border-white/[0.05] px-4 py-3 flex items-center gap-2 z-10 relative">
+                <div className="w-2.5 h-2.5 rounded-full bg-white/20 group-hover:bg-[#ff5f56] transition-colors" />
+                <div className="w-2.5 h-2.5 rounded-full bg-white/20 group-hover:bg-[#ffbd2e] transition-colors" />
+                <div className="w-2.5 h-2.5 rounded-full bg-white/20 group-hover:bg-[#27c93f] transition-colors" />
+              </div>
+              
+              {/* Project Image */}
+              <div className="flex-1 relative">
+                <Image
+                  src="/images/movva.png"
+                  alt="MOVVA Logística"
+                  fill
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F23] via-transparent to-transparent opacity-80" />
+              </div>
+            </div>
+            
+            <div className="p-8 flex flex-col flex-grow bg-[#0F0F23]/40 justify-between">
+              <div>
+                <h3 className="text-2xl font-bold text-white tracking-tight mb-3">
+                  MOVVA Logística
+                </h3>
+                <p className="text-muted-foreground font-light leading-relaxed mb-6">
+                  Logística residencial e interestadual de alto padrão. Calculadora de mudanças inteligente com roteamento rodoviário em tempo real via API e mapa de cobertura interativo.
+                </p>
+              </div>
+              
+              <div>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'].map(tech => (
+                    <span key={tech} className="text-[10px] font-semibold tracking-wider uppercase px-2 py-1 rounded bg-white/[0.03] border border-white/[0.05] text-[#A855F7]">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                <a href="https://movva-two.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white/70 text-sm font-medium hover:text-white transition-colors w-max group/link">
+                  Acessar plataforma
                   <ArrowUpRight size={16} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
                 </a>
               </div>

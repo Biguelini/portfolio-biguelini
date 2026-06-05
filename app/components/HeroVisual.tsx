@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 // Generates points on a sphere surface
 function fibonacciSphere(samples: number, radius: number) {
