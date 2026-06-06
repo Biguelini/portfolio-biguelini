@@ -3,44 +3,64 @@
 @tailwind utilities;
 
 :root {
-  --background: #000000;
+  --background: #fdfbf7;
+  --foreground: #000000;
+  --brutal-shadow: #000000;
+  --brutal-border: #000000;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --brutal-shadow: #ffffff;
+  --brutal-border: #ffffff;
 }
 
 body {
   background-color: var(--background);
-  /* A subtle grain or very dark setting */
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-.glass-panel {
-  @apply bg-[#0A0A0A]/50 border border-white/[0.05] backdrop-blur-xl;
+.brutal-border {
+  border: 4px solid var(--brutal-border);
 }
 
-.text-muted-foreground {
-  @apply text-white/50;
+.brutal-border-b {
+  border-bottom: 4px solid var(--brutal-border);
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/40;
+.brutal-shadow {
+  box-shadow: 4px 4px 0px 0px var(--brutal-shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
-.bg-gradient-radial {
-  background-image: radial-gradient(var(--tw-gradient-stops));
+.brutal-shadow:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px 0px var(--brutal-shadow);
+}
+
+.brutal-shadow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--brutal-shadow);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--background);
+  border-left: 4px solid var(--brutal-border);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 4px;
+  background: #FFd800;
+  border-left: 4px solid var(--brutal-border);
+  border-bottom: 4px solid var(--brutal-border);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #FF2A54;
 }

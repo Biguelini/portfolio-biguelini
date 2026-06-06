@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,72 +13,74 @@ export function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`fixed top-4 md:top-8 inset-x-0 w-full z-50 flex justify-center px-4`}
     >
       <div className="w-full max-w-7xl flex items-center justify-between">
         
-        {/* Left/Center Pill Nav */}
-        <nav className="glass-panel px-2 py-2 rounded-full flex items-center gap-2 md:gap-6 shadow-2xl">
-          <Link href="#home" className="pl-4 pr-2 font-semibold text-white tracking-tight flex items-center gap-2 text-sm">
+
+        <nav className="bg-brutal-bg brutal-border brutal-shadow px-4 py-3 flex items-center gap-2 md:gap-6 flex-1 max-w-fit">
+          <Link href="#home" className="font-black text-brutal-fg tracking-tighter uppercase text-lg">
             biguelini.
           </Link>
           
-          <div className="hidden md:flex items-center gap-1 bg-white/[0.03] rounded-full p-1 border border-white/[0.05]">
-            <a href="#about" className="px-4 py-1.5 rounded-full text-xs font-medium text-white/60 hover:text-white hover:bg-white/[0.05] transition-all">Sobre</a>
-            <a href="#services" className="px-4 py-1.5 rounded-full text-xs font-medium text-white/60 hover:text-white hover:bg-white/[0.05] transition-all">Serviços</a>
-            <a href="#projects" className="px-4 py-1.5 rounded-full text-xs font-medium text-white/60 hover:text-white hover:bg-white/[0.05] transition-all">Projetos</a>
+          <div className="hidden md:flex items-center gap-4 border-l-4 border-brutal-border pl-6 ml-2">
+            <a href="#about" className="text-sm font-bold uppercase text-brutal-fg hover:text-brutal-blue transition-colors">Sobre</a>
+            <a href="#services" className="text-sm font-bold uppercase text-brutal-fg hover:text-brutal-blue transition-colors">Serviços</a>
+            <a href="#projects" className="text-sm font-bold uppercase text-brutal-fg hover:text-brutal-blue transition-colors">Projetos</a>
           </div>
 
           <a
             href="https://wa.me/5542998349909"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-4 py-2 rounded-full text-xs font-medium transition-all"
+            className="hidden md:flex items-center gap-2 bg-brutal-yellow brutal-border text-black px-4 py-2 text-sm font-black uppercase hover:bg-brutal-pink hover:text-white transition-colors"
           >
-            Let's Chat <ArrowUpRight size={14} className="text-[#A855F7]" />
+            Contato <ArrowRight size={18} />
           </a>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/70 hover:text-white rounded-full bg-white/[0.05]"
+            className="md:hidden p-2 text-brutal-fg"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={16} /> : <Menu size={16} />}
+            {isOpen ? <X size={24} strokeWidth={3} /> : <Menu size={24} strokeWidth={3} />}
           </button>
         </nav>
 
-        {/* Right Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-6">
-          <a href="https://linkedin.com/in/joaopedrobiguelini" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-white/50 hover:text-white transition-colors flex items-center gap-2">
-            in <span className="hidden xl:inline">LinkedIn</span>
+
+        <div className="hidden lg:flex items-center gap-4">
+          <a href="https://linkedin.com/in/joaopedrobiguelini" target="_blank" rel="noopener noreferrer" className="bg-brutal-bg brutal-border brutal-shadow px-4 py-2 font-bold uppercase text-brutal-fg hover:bg-brutal-blue hover:text-white transition-colors">
+            LinkedIn
           </a>
-          <a href="https://github.com/biguelini" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-white/50 hover:text-white transition-colors flex items-center gap-2">
-            gh <span className="hidden xl:inline">GitHub</span>
+          <a href="https://github.com/biguelini" target="_blank" rel="noopener noreferrer" className="bg-brutal-bg brutal-border brutal-shadow px-4 py-2 font-bold uppercase text-brutal-fg hover:bg-brutal-blue hover:text-white transition-colors">
+            GitHub
           </a>
+          <ThemeToggle />
         </div>
       </div>
 
-      {/* Mobile Menu */}
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-16 left-4 right-4 glass-panel rounded-3xl p-6 md:hidden shadow-2xl"
+            className="absolute top-20 left-4 right-4 bg-brutal-bg brutal-border brutal-shadow p-6 md:hidden flex flex-col gap-6"
           >
-            <div className="flex flex-col gap-4">
-              <a href="#about" onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 hover:text-white">Sobre</a>
-              <a href="#services" onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 hover:text-white">Serviços</a>
-              <a href="#technologies" onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 hover:text-white">Tecnologias</a>
-              <a href="#projects" onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 hover:text-white">Projetos</a>
-              <div className="h-px bg-white/[0.1] my-2" />
-              <a href="https://wa.me/5542998349909" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-white font-medium">
-                Let's Chat <ArrowUpRight size={18} className="text-[#A855F7]" />
-              </a>
+            <div className="flex justify-end mb-2">
+              <ThemeToggle />
             </div>
+            <a href="#about" onClick={() => setIsOpen(false)} className="text-2xl font-black uppercase text-brutal-fg border-b-4 border-brutal-border pb-2">Sobre</a>
+            <a href="#services" onClick={() => setIsOpen(false)} className="text-2xl font-black uppercase text-brutal-fg border-b-4 border-brutal-border pb-2">Serviços</a>
+            <a href="#technologies" onClick={() => setIsOpen(false)} className="text-2xl font-black uppercase text-brutal-fg border-b-4 border-brutal-border pb-2">Tecnologias</a>
+            <a href="#projects" onClick={() => setIsOpen(false)} className="text-2xl font-black uppercase text-brutal-fg border-b-4 border-brutal-border pb-2">Projetos</a>
+            
+            <a href="https://wa.me/5542998349909" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-black bg-brutal-yellow brutal-border p-4 font-black uppercase mt-4">
+              CONTATO <ArrowRight size={24} />
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

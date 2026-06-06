@@ -7,59 +7,68 @@ const services = [
   {
     title: 'Desenvolvimento Web',
     description: 'Criação de sistemas e aplicações personalizadas.',
-    icon: Code2
+    icon: Code2,
+    color: 'bg-brutal-yellow'
   },
   {
     title: 'Landing Pages',
     description: 'Páginas otimizadas para conversão.',
-    icon: MonitorPlay
+    icon: MonitorPlay,
+    color: 'bg-brutal-pink'
   },
   {
     title: 'Sites Institucionais',
     description: 'Presença profissional para empresas.',
-    icon: Building2
+    icon: Building2,
+    color: 'bg-brutal-blue'
   },
   {
     title: 'APIs e Integrações',
     description: 'Integrações entre plataformas e serviços.',
-    icon: Network
+    icon: Network,
+    color: 'bg-brutal-green'
   }
 ]
 
 export function Services() {
   return (
-    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-brutal-bg">
       <div className="max-w-6xl mx-auto">
+        
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-6xl font-black mb-16 tracking-tight text-brutal-fg uppercase text-center"
+        >
+          Meus Serviços
+        </motion.h2>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
         >
           {services.map((service, index) => {
             const Icon = service.icon
             return (
               <motion.div
                 key={index}
-                whileHover={{ y: -5 }}
-                className="group glass-panel p-8 md:p-10 rounded-3xl relative overflow-hidden transition-colors hover:bg-white/[0.05]"
+                className={`group ${service.color} p-8 md:p-10 brutal-border brutal-shadow flex flex-col h-full justify-between`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/0 via-transparent to-[#7C3AED]/0 group-hover:from-[#7C3AED]/10 transition-all duration-500" />
-                
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <div>
-                    <div className="w-14 h-14 rounded-2xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center mb-6 text-[#A855F7]">
-                      <Icon size={28} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
-                      {service.title}
-                    </h3>
+                <div>
+                  <div className="w-16 h-16 bg-brutal-bg brutal-border flex items-center justify-center mb-6 text-brutal-fg brutal-shadow">
+                    <Icon size={32} strokeWidth={2} />
                   </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed font-light">
-                    {service.description}
-                  </p>
+                  <h3 className="text-3xl font-black text-black mb-4 tracking-tight uppercase">
+                    {service.title}
+                  </h3>
                 </div>
+                <p className="text-brutal-fg font-medium text-lg leading-relaxed bg-brutal-bg p-4 brutal-border mt-4">
+                  {service.description}
+                </p>
               </motion.div>
             )
           })}
